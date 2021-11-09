@@ -11,6 +11,7 @@ BOT_NAME = 'tiemchung'
 
 SPIDER_MODULES = ['tiemchung.spiders']
 NEWSPIDER_MODULE = 'tiemchung.spiders'
+CHROME_DRIVER_PATH = 'C:\VANTAN\Patch\chromedriver.exe'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

@@ -27,30 +27,36 @@ class BotTiemchung1Spider(scrapy.Spider):
             time.sleep(5)
             click_button.click()
             
-            STTs = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[1]')
-            tinh_thanhpho = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[2]')
-            dukien_vacxinphanbo = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[3]')
-            phanbo_thucte = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[4]')
-            dansodudieukientiemchung = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[5]')
-            solieudatiemchung = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[6]')
-            tyledukiensetiemchung = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[7]')
-            tyledatiemchung = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[8]')
-            tyledatiemitnhatmotmui = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[9]')
-            tyledatiemchung_trenvacxinphanbothucte = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[10]')
-            tylephanbovacxin_trenvacxinphanbocanuoc = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[11]')
+            a_STTs = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[1]')
+            b_citys = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[2]')
+            c_dukien_vacxinphanbo = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[3]')
+            d_phanbo_thucte = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[4]')
+            e_dansodudieukientiemchung = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[5]')
+            f_solieudatiemchung = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[6]')
+            g_tyledukiensetiemchung = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[7]')
+            h_tyledatiemchung = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[8]')
+            p_tyledatiemitnhatmotmui = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[9]')
+            s_tyledatiemchung_trenvacxinphanbothucte = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[10]')
+            t_tylephanbovacxin_trenvacxinphanbocanuoc = driver.find_elements_by_xpath('//div[@class="col-lg-12 col-md-12 border-bound pt-3"]//app-local-vaccine-statistic//div//div//tbody//tr//td[11]')
+            
+                
             for i in range(0,63):
+                # tyledukiensetiemchung = str(tyledukiensetiemchung)
+                # if "%" in tyledukiensetiemchung:
+                #     tyledukiensetiemchung = tyledukiensetiemchung.replace("%","")
+                # tyledatiemchung = int(tyledatiemchung.rstrip("%"))
                 item = Tiemchung1Item()
-                item['STT'] = STTs[i].text
-                item['tinh_thanhpho'] = tinh_thanhpho[i].text
-                item['dukien_vacxinphanbo'] = dukien_vacxinphanbo[i].text
-                item['phanbo_thucte'] = phanbo_thucte[i].text
-                item['dansodudieukientiemchung'] = dansodudieukientiemchung[i].text
-                item['solieudatiemchung'] = solieudatiemchung[i].text
-                item['tyledukiensetiemchung'] = tyledukiensetiemchung[i].text
-                item['tyledatiemchung'] = tyledatiemchung[i].text
-                item['tyledatiemitnhatmotmui'] = tyledatiemitnhatmotmui[i].text
-                item['tyledatiemchung_trenvacxinphanbothucte'] = tyledatiemchung_trenvacxinphanbothucte[i].text
-                item['tylephanbovacxin_trenvacxinphanbocanuoc'] = tylephanbovacxin_trenvacxinphanbocanuoc[i].text
+                item['a_STTs'] = a_STTs[i].text
+                item['b_citys'] = b_citys[i].text
+                item['c_dukien_vacxinphanbo'] = c_dukien_vacxinphanbo[i].text
+                item['d_phanbo_thucte'] = d_phanbo_thucte[i].text
+                item['e_dansodudieukientiemchung'] = e_dansodudieukientiemchung[i].text
+                item['f_solieudatiemchung'] = f_solieudatiemchung[i].text
+                item['g_tyledukiensetiemchung'] = g_tyledukiensetiemchung[i].text
+                item['h_tyledatiemchung'] = h_tyledatiemchung[i].text
+                item['p_tyledatiemitnhatmotmui'] = p_tyledatiemitnhatmotmui[i].text
+                item['s_tyledatiemchung_trenvacxinphanbothucte'] = s_tyledatiemchung_trenvacxinphanbothucte[i].text
+                item['t_tylephanbovacxin_trenvacxinphanbocanuoc'] = t_tylephanbovacxin_trenvacxinphanbocanuoc[i].text
                 # "{},{},{},{},{},{},{},{},{},{},{}\n".format(item['STT'],item['tinh_thanhpho'],item['dukien_vacxinphanbo'],item['phanbo_thucte'],item['dansodudieukientiemchung'],item['solieudatiemchung'],item['tyledukiensetiemchung'],item['tyledatiemchung'],item['tyledatiemitnhatmotmui'],item['tyledatiemchung_trenvacxinphanbothucte'],item['tylephanbovacxin_trenvacxinphanbocanuoc'])
                 yield item
     
