@@ -1,9 +1,91 @@
 import os
 import pandas as pd
+pd.options.mode.chained_assignment = None
 
-path = os.getcwd() + "\\tiemchung1"
+path = os.getcwd()
 os.chdir(path)
-
 df = pd.read_csv("dulieutiemchung.csv", encoding="utf-8")
-df.columns = ["STT", "Tỉnh/Thành phố", "Dự kiến KH phân bổ", "Phân bổ thực tế", "Dân số >= 18 tuổi", "Số liều đã tiêm", "Tỷ lệ dự kiến phân bổ theo kế hoạch/ dân số (>= 18 tuổi)", "Tỷ lệ đã phân bổ/ dân số (>= 18 tuổi)", "Tỷ lệ đã tiêm ít nhất 1 mũi/ dân số (>= 18 tuổi)", "Tỷ lệ tiêm chủng/ Vắc xin phân bổ thực tế", "Tỷ lệ phân bổ vắc xin/Tổng số phân bổ cả nước"]
-df.to_csv("dulieutiemchung.csv", index=False, encoding="utf-8")
+
+"""     Sửa tên các cột     """
+
+# df.columns = ["stt", "thanhpho", "du_kien_phan_bo", "phan_bo_thuc_te", "dan_so_du_dieu_kien_tiem", "so_lieu_da_tiem", "ty_le_du_kien_phan_bo", "ty_le_da_phan_bo_thuc_te", "ty_le_dan_so_it_nhat_tiem_mot_mui", "ty_le_tiem_chung_tren_so_vacxin_phan_bo_thuc_te", "ty_le_phan_bo_vacxin_so_voi_ca_nuoc"]
+
+df.columns = ["stt", "thanhpho", "du_kien_phan_bo", "phan_bo_thuc_te", "dan_so_du_dieu_kien_tiem", "so_lieu_da_tiem", "ty_le_du_kien_phan_bo_so_voi_dan_so", "ty_le_da_phan_bo_thuc_te_so_voi_dan_so", "ty_le_dan_so_it_nhat_tiem_mot_mui", "ty_le_tiem_chung_tren_so_vacxin_phan_bo_thuc_te", "ty_le_phan_bo_vacxin_so_voi_ca_nuoc"]
+
+df["thanhpho"] = df["thanhpho"].replace("Hà Nội", "Ha Noi")
+df["thanhpho"] = df["thanhpho"].replace("Hồ Chí Minh", "Ho Chi Minh")
+df["thanhpho"] = df["thanhpho"].replace("Thanh Hóa", "Thanh Hoa")
+df["thanhpho"] = df["thanhpho"].replace("Nghệ An", "Nghe An")
+df["thanhpho"] = df["thanhpho"].replace("Đồng Nai", "Dong Nai")
+df["thanhpho"] = df["thanhpho"].replace("Bình Dương", "Binh Duong")
+df["thanhpho"] = df["thanhpho"].replace("An Giang", "An Giang")
+df["thanhpho"] = df["thanhpho"].replace("Hải Dương", "Hai Duong")
+df["thanhpho"] = df["thanhpho"].replace("Đắk Lắk", "Dak Lak")
+df["thanhpho"] = df["thanhpho"].replace("Thái Bình", "Thai Binh")
+df["thanhpho"] = df["thanhpho"].replace("Hải Phòng", "Hai Phong")
+df["thanhpho"] = df["thanhpho"].replace("Bắc Giang", "Bac Giang")
+df["thanhpho"] = df["thanhpho"].replace("Nam Định", "Nam Dinh")
+df["thanhpho"] = df["thanhpho"].replace("Tiền Giang", "Tien Giang")
+df["thanhpho"] = df["thanhpho"].replace("Kiên Giang", "Kien Giang")
+df["thanhpho"] = df["thanhpho"].replace("Long An", "Long An")
+df["thanhpho"] = df["thanhpho"].replace("Đồng Tháp", "Dong Thap")
+df["thanhpho"] = df["thanhpho"].replace("Gia Lai", "Gia Lai")
+df["thanhpho"] = df["thanhpho"].replace("Quảng Nam", "Quang Nam")
+df["thanhpho"] = df["thanhpho"].replace("Bình Định", "Binh Dinh")
+df["thanhpho"] = df["thanhpho"].replace("Phú Thọ", "Phu Tho")
+df["thanhpho"] = df["thanhpho"].replace("Bắc Ninh", "Bac Ninh")
+df["thanhpho"] = df["thanhpho"].replace("Quảng Ninh", "Quang Ninh")
+df["thanhpho"] = df["thanhpho"].replace("Lâm Đồng", "Lam Dong")
+df["thanhpho"] = df["thanhpho"].replace("Hà Tĩnh", "Ha Tinh")
+df["thanhpho"] = df["thanhpho"].replace("Bến Tre", "Ben Tre")
+df["thanhpho"] = df["thanhpho"].replace("Thái Nguyên", "Thai Nguyen")
+df["thanhpho"] = df["thanhpho"].replace("Hưng Yên", "Hung Yen")
+df["thanhpho"] = df["thanhpho"].replace("Sơn La", "Son La")
+df["thanhpho"] = df["thanhpho"].replace("Cần Thơ", "Can Tho")
+df["thanhpho"] = df["thanhpho"].replace("Quảng Ngãi", "Quang Ngai")
+df["thanhpho"] = df["thanhpho"].replace("Khánh Hòa", "Khanh Hoa")
+df["thanhpho"] = df["thanhpho"].replace("Bình Thuận", "Binh Thuan")
+df["thanhpho"] = df["thanhpho"].replace("Sóc Trăng", "Soc Trang")
+df["thanhpho"] = df["thanhpho"].replace("Cà Mau", "Ca Mau")
+df["thanhpho"] = df["thanhpho"].replace("Tây Ninh", "Tay Ninh")
+df["thanhpho"] = df["thanhpho"].replace("Vĩnh Phúc", "Vinh Phuc")
+df["thanhpho"] = df["thanhpho"].replace("Bà Rịa - Vũng Tàu", "Ba Ria - Vung Tau")
+df["thanhpho"] = df["thanhpho"].replace("Đà Nẵng", "Da Nang")
+df["thanhpho"] = df["thanhpho"].replace("Thừa Thiên Huế", "Thua Thien Hue")
+df["thanhpho"] = df["thanhpho"].replace("Vĩnh Long", "Vinh Long")
+df["thanhpho"] = df["thanhpho"].replace("Trà Vinh", "Tra Vinh")
+df["thanhpho"] = df["thanhpho"].replace("Bình Phước", "Binh Phuoc")
+df["thanhpho"] = df["thanhpho"].replace("Ninh Bình", "Ninh Binh")
+df["thanhpho"] = df["thanhpho"].replace("Phú Yên", "Phu Yen")
+df["thanhpho"] = df["thanhpho"].replace("Bạc Liêu", "Bac Lieu")
+df["thanhpho"] = df["thanhpho"].replace("Quảng Bình", "Quang Binh")
+df["thanhpho"] = df["thanhpho"].replace("Hà Giang", "Ha Giang")
+df["thanhpho"] = df["thanhpho"].replace("Hoà Bình", "Hoa Binh")
+df["thanhpho"] = df["thanhpho"].replace("Hà Nam", "Ha Nam")
+df["thanhpho"] = df["thanhpho"].replace("Yên Bái", "Yen Bai")
+df["thanhpho"] = df["thanhpho"].replace("Tuyên Quang", "Tuyen Quang")
+df["thanhpho"] = df["thanhpho"].replace("Lạng Sơn", "Lang Son")
+df["thanhpho"] = df["thanhpho"].replace("Hậu Giang", "Hau Giang")
+df["thanhpho"] = df["thanhpho"].replace("Lào Cai", "Lao Cai")
+df["thanhpho"] = df["thanhpho"].replace("Quảng Trị", "Quang Tri")
+df["thanhpho"] = df["thanhpho"].replace("Đắk Nông", "Dak Nong")
+df["thanhpho"] = df["thanhpho"].replace("Điện Biên", "Dien Bien")
+df["thanhpho"] = df["thanhpho"].replace("Ninh Thuận", "Ninh Thuan")
+df["thanhpho"] = df["thanhpho"].replace("Kon Tum", "Kon Tum")
+df["thanhpho"] = df["thanhpho"].replace("Cao Bằng", "Cao Bang")
+df["thanhpho"] = df["thanhpho"].replace("Lai Châu", "Lai Chau") 
+df["thanhpho"] = df["thanhpho"].replace("Bắc Kạn", "Bac Kan")
+
+df["du_kien_phan_bo"] = df["du_kien_phan_bo"].replace(",", "", regex=True)
+df["phan_bo_thuc_te"] = df["phan_bo_thuc_te"].replace(",", "", regex=True)
+df["dan_so_du_dieu_kien_tiem"] = df["dan_so_du_dieu_kien_tiem"].replace(",", "", regex=True)
+df["so_lieu_da_tiem"] = df["so_lieu_da_tiem"].replace(",", "", regex=True)
+
+
+df["ty_le_du_kien_phan_bo_so_voi_dan_so"] = df["ty_le_du_kien_phan_bo_so_voi_dan_so"].replace(" %", "", regex=True)
+df["ty_le_da_phan_bo_thuc_te_so_voi_dan_so"] = df["ty_le_da_phan_bo_thuc_te_so_voi_dan_so"].replace(" %", "", regex=True)
+df["ty_le_dan_so_it_nhat_tiem_mot_mui"] = df["ty_le_dan_so_it_nhat_tiem_mot_mui"].replace(" %", "", regex=True)
+df["ty_le_tiem_chung_tren_so_vacxin_phan_bo_thuc_te"] = df["ty_le_tiem_chung_tren_so_vacxin_phan_bo_thuc_te"].replace(" %", "", regex=True)
+df["ty_le_phan_bo_vacxin_so_voi_ca_nuoc"] = df["ty_le_phan_bo_vacxin_so_voi_ca_nuoc"].replace(" %", "", regex=True)
+
+df.to_csv("dulieutiemchungdaxuly.csv", index=False, encoding="utf-8")
